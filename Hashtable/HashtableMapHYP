@@ -1,0 +1,294 @@
+package CS400ProjectReview.Hashtable;
+// --== CS400 Project HashtableMap ==--
+// Name: Hye Won Park
+// CSL Username: hyep
+// Email: hpark383@wisc.edu email address>
+// Lecture #: <Gary Dahl, TTh 1:00-2:15>
+//
+
+import java.util.NoSuchElementException;
+
+/**
+ * This class contains various methods that pairs keys to values in which
+ * duplicate keys are not allowed
+ *
+ */
+public class HashtableMapHYP<keyType, valueType>{
+
+    /**
+     * This helper class contains methods that pairs key and value within a
+     * single object
+     *
+     */
+    public class HashPair<keyType, valueType> {
+        private keyType key; // key type
+        private valueType value; // value type
+
+        /**
+         * pairs the key and value within a single object
+         *
+         * @param key   key of hash table
+         * @param value value of hash table
+         */
+        public HashPair(keyType key, valueType value) {
+            this.key = key;
+            this.value = value;
+        }
+
+        /**
+         * getter for the key type
+         *
+         * @return key type of hash table
+         */
+        public keyType getKey() {
+            return this.key;
+        }
+
+        /**
+         * getter for the value type
+         *
+         * @return value type of hash table
+         */
+        public valueType getValue() {
+            return this.value;
+        }
+    }
+
+    protected HashPair<keyType, valueType>[] array; // array of key types and values within a single object
+    private int capacity; // the capacity of the hash table array
+    private int size = 0; // number of pairs in the array
+    private double loadFac; // load factor, size/capacity
+
+    /**
+     * the constructor for the hash table
+     *
+     * @param capacity the capacity of the hash table array
+     */
+    @SuppressWarnings("unchecked")
+    public HashtableMapHYP(int capacity) {
+        this.capacity = capacity;
+        this.size = size;
+        array = new HashPair[capacity];
+        this.loadFac = (double) size / (double) capacity;
+
+    }
+
+    /*
+     * the constructor for the hash table with default capacity, 8
+     *
+     */
+    @SuppressWarnings("unchecked")
+    public HashtableMapHYP() {
+        this.capacity = 8;
+        this.size = size;
+        array = new HashPair[capacity];
+        this.loadFac = (double) size / (double) capacity;
+
+    }
+
+    /*
+     * add a new key-value pair/mapping to this hash table array
+     *
+     * @param key the key to add to this hash table array
+     *
+     * @throws IllegalArgumentException with a descriptive message indicating the
+     * key is null or duplicate
+     */
+    public void put(keyType key, valueType value) throws IllegalArgumentException {
+        if (key == null || containsKey(key)) {
+            throw new IllegalArgumentException("key cannot be null or duplicate of one already " + "stored");
+        }
+
+        HashPair<keyType, valueType> pair = new HashPair<>(key, value);
+        int hashIndex = Math.abs(key.hashCode()) % capacity;
+        int index = 0;
+        int i = 0;
+
+        // when the array at hashIndex is empty, put the pair into the array at the
+        // hashIndex
+        if (array[hashIndex] == null) {
+            array[hashIndex] = pair;
+            this.size++;
+            this.loadFac = ((double) size) / ((double) capacity);
+            if (loadFac >= 0.7) {
+                rehash();
+            }
+        } else {
+            // when the array at hashIdex is not empty, loop over the array until
+            // there is a empty element
+            while (array[(hashIndex + i) % capacity] != null) {
+                i++;
+            }
+            // put the pair into the array at the index where the element is empty
+            array[(hashIndex + i) % capacity] = pair;
+            size++;
+            this.loadFac = ((double) size) / ((double) capacity);
+            if (loadFac >= 0.7) {
+                rehash();
+            }
+        }
+    }
+
+    /*
+     * helper method to rehash the capacity of the hash table array
+     *
+     */
+    @SuppressWarnings("unchecked")
+    private void rehash() {
+        int newcapacity = this.capacity * 2;
+
+        // array initialized to store the hash table array
+        HashPair<keyType, valueType>[] newarray = new HashPair[newcapacity];
+
+        int i = 0;
+        for (int j = 0; j < capacity; j++) {
+            if (array[j] != null) {
+                int rehashIndex = Math.abs(array[j].getKey().hashCode()) % newcapacity;
+                // when the array at hashindex is null, put the element in the
+                // hash table array to the newarray
+                if (newarray[rehashIndex] == null) {
+                    newarray[rehashIndex] = array[j];
+                } else {
+                    while (newarray[(rehashIndex + i) % newcapacity] != null) {
+                        i++;
+                    }
+                }
+                // add the element in the hash table array into the newarray
+                newarray[(rehashIndex + i) % newcapacity] = array[j];
+            }
+        }
+        // double the capacity
+        this.capacity = newcapacity;
+        // rehash the array
+        array = newarray;
+    }
+
+    /*
+     * check whether a key maps to a value within this hash table array
+     *
+     * @param key the key to check within this hash table array
+     */
+    public boolean containsKey(keyType key) {
+
+        // loop through the array and check if it contains a key within
+        // this hash table array
+        for (int i = 0; i < capacity; i++) {
+            if (array[i] != null && array[i].getKey().equals(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+     * method that returns the string representation of the hash table array element
+     *
+     */
+    @Override
+    public String toString() {
+        String s = "";
+        // loop through the array and store the string representation
+        // of the hash table array element
+        for (HashPair pair : array) {
+            if (pair == null) {
+                s += "(null, null) ";
+            } else {
+                s += "(" + pair.getKey() + ", " + pair.getValue() + ") ";
+            }
+        }
+        return s;
+    }
+
+    /*
+     * returns the value that is paired with the key that is stored in the
+     * hash table array
+     *
+     * @param key the key to search for the value
+     *
+     * @return the value that is paired with the given key
+     *
+     * @throws NoSuchElementException when the key is not stored in the
+     * array
+     *
+     */
+    public valueType get(keyType key) throws NoSuchElementException {
+
+        valueType returnValue = null;
+
+        if (!containsKey(key)) {
+            throw new NoSuchElementException("key is not stored in this collection");
+        }
+
+        // loop through the array and find the value that is paired with the
+        // given key
+        for (int i = 0; i < capacity; i++) {
+            if (array[i] != null && array[i].getKey().equals(key)) {
+                // store the value of the given key to return
+                returnValue = array[i].getValue();
+            }
+        }
+
+        return returnValue;
+
+    }
+
+    /*
+     * remove the pair of the given key from the hash table array
+     *
+     * @param key the key to remove from the hash table array
+     *
+     * @return the value of the given key which was removed from the hash table
+     * array
+     *
+     */
+    public valueType remove(keyType key) throws NoSuchElementException {
+        int hashIndex = Math.abs(key.hashCode()) % capacity;
+        int index = 0;
+        int i = 0;
+
+        if (!containsKey(key)) {
+            throw new NoSuchElementException("key is not stored in this collection");
+        }
+
+        // loop through the elements of the hash table array to find the index
+        // of the given key
+        while (!array[(hashIndex + i) % capacity].getKey().equals(key) &&
+                array[(hashIndex + i) % capacity] != null) {
+            i++;
+        }
+
+        // store the value of the given key to return
+        valueType remove = array[(hashIndex + i) % capacity].getValue();
+        array[(hashIndex + i) % capacity] = null;
+        size--;
+        this.loadFac = (double) (size) / capacity;
+        return remove;
+
+    }
+
+    /*
+     * remove all key-value pairs from this hash table array
+     *
+     */
+    public void clear() {
+        this.size = 0;
+        this.array = new HashPair[capacity];
+
+    }
+
+    /*
+     * return the number of keys stored within this hash table array
+     *
+     */
+    public int getSize() {
+        return this.size;
+    }
+
+    /*
+     * return the capacity of this hash table array
+     */
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+}
