@@ -1,0 +1,39 @@
+ML Steps
+1. the problem
+2. data collection
+3. data cleaning
+4. data selection (selecting relative data for our model)
+5. pick a model
+6. train model
+7. test model
+8. improve model by repeatedly training
+
+
+getting started:
+1. learn the basics of the language
+2. learn basic ML algo
+    -linear regression
+    -KNN (K-Nearest_Neighbours)
+    -SVM(Support Vector Machines)
+3. learn what interests you
+    -reinforcement learning
+    -neural networks
+    -computer vision
+
+
+
+
+
+0:54 / 11:20
+
+•
+What is Machine Learning
+
+Next:
+Python Machine Learning Tutorial #2 - Linear Regression p.1
+Python Machine Learning Tutorials
+1 / 12
+
+Python Machine Learning Tutorial #1 - Introduction:
+https://www.youtube.com/watch?v=ujTCoH21GlA&list=PLzMcBGfZo4-mP7qA9cagf68V06sko5otr
+(DOES NOT WORK FOR GITHUB CODESPACES)
