@@ -1,20 +1,3 @@
-//////////////// FILE HEADER (INCLUDE IN EVERY FILE) //////////////////////////
-//
-// Title: Intersection
-// Course: CS 300 Fall 2022
-//
-// Author: Hye Won Park
-// Email: hpark383@wisc.edup
-// Lecturer: Hobbes LeGault
-//
-///////////////////////// ALWAYS CREDIT OUTSIDE HELP //////////////////////////
-//
-// Persons: got help from TA
-// Online Sources: None
-//
-///////////////////////////////////////////////////////////////////////////////
-
-
 /**
  * This class represents a single intersection point where two streets laid out on a grid plan cross
  * at specified x and y coordinate positions.

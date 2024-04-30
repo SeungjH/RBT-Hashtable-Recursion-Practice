@@ -1,14 +1,3 @@
-////////////////FILE HEADER (INCLUDE IN EVERY FILE) //////////////////////////
-//
-//Title:    P0
-//Course:   CS 400 Spring 2023
-//
-//Author:   Hye Won Park
-//Email:    hpark383@wisc,edu
-//Lecturer: Gary Dahl
-//////////////////////////////////////////////////////////////////////////////
-
-
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -64,7 +53,7 @@ public class RedBlackTree<T extends Comparable<T>> {
      * @throws IllegalArgumentException when data is already contained in the tree
      */
     public boolean insert(T data) throws NullPointerException, IllegalArgumentException {
-        return false;
+        //case 1 
     }
 
     /**

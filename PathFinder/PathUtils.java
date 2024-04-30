@@ -1,19 +1,3 @@
-//////////////// FILE HEADER (INCLUDE IN EVERY FILE) //////////////////////////
-//
-// Title: PathUtils
-// Course: CS 300 Fall 2022
-//
-// Author: Hye Won Park
-// Email: hpark383@wisc.edu
-// Lecturer: Hobbes LeGault
-//
-///////////////////////// ALWAYS CREDIT OUTSIDE HELP //////////////////////////
-//
-// Persons: got help from TA
-// Online Sources: None
-//
-///////////////////////////////////////////////////////////////////////////////
-
 import java.util.ArrayList;
 
 /**

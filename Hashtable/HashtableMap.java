@@ -1,11 +1,3 @@
-package CS400ProjectReview.Hashtable;
-// --== CS400 Project HashtableMap ==--
-// Name: Hye Won Park -------- edited by seungjun han in 2024/4/16
-// CSL Username: hyep
-// Email: hpark383@wisc.edu email address>
-// Lecture #: <Gary Dahl, TTh 1:00-2:15>
-//
-
 import java.util.NoSuchElementException;
 
 /**

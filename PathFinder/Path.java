@@ -1,20 +1,3 @@
-//////////////// FILE HEADER (INCLUDE IN EVERY FILE) //////////////////////////
-//
-// Title: Path
-// Course: CS 300 Fall 2022
-//
-// Author: Hye Won Park
-// Email: hpark383@wisc.edu
-// Lecturer: Hobbes LeGault
-//
-///////////////////////// ALWAYS CREDIT OUTSIDE HELP //////////////////////////
-//
-// Persons: got help from TA
-// Online Sources: None
-//
-///////////////////////////////////////////////////////////////////////////////
-
-
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
