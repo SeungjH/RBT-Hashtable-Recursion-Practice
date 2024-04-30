@@ -76,13 +76,31 @@ public class RedBlackTree<T extends Comparable<T>> {
         nullSpaceFinder(compareNode, newNode);
 
         //determine which case the tree is on by comparing aunts
-        if(newNode.context[0].)
+        //left aunt
+        if(newNode.context[0].context[0].context[1] != null){
+
+        }
+        //right aunt
+        else if(newNode.context[0].context[0].context[2] != null){
+
+        }
+        //left & right null aunt
+        else{
+            if(newNode.context[0].context[0].data.compareTo(data) < 0){
+
+            }
+            else if(newNode.context[0].context[0].data.compareTo(data) > 0){
+                
+            }
+
+
+        }
 
 
 
     }
 
-    //TODO work on this tmr (trying to implement recursion method) **may not work using recursion**
+    //TODO work on this tmr (trying to implement recursion method) ##may not work using recursion## also, how can I check node colors?
     /**
      * helper method for insert for finding a place (null) for new node in the tree
      * 
@@ -90,7 +108,6 @@ public class RedBlackTree<T extends Comparable<T>> {
      * @param newNode is the new node that insert method is inserting
      */
     private void nullSpaceFinder(Node<T> compareNode, Node<T> newNode){
-
         if(compareNode.data.compareTo(newNode.data) > 0){
             if(compareNode.context[1] != null){
                 compareNode = compareNode.context[1];
