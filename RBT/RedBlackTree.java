@@ -51,9 +51,68 @@ public class RedBlackTree<T extends Comparable<T>> {
      * @return true if the value was inserted, false if not
      * @throws NullPointerException     when the provided data argument is null
      * @throws IllegalArgumentException when data is already contained in the tree
+     *
+     *     FOR EASY REFERENCES
+     * 
+     *         context[0]
+     *             |
+     *            NODE
+     *        /          \
+     * context[1]     context[2]
+     * 
+     * 
      */
     public boolean insert(T data) throws NullPointerException, IllegalArgumentException {
-        //case 1 
+        if(data == null){
+            throw new NullPointerException("the provided data argument is null");
+        }
+        if(contains(data)){
+            throw new IllegalArgumentException("data is already contained in the tree");
+        }
+        //finding the place for the new data
+        Node<T> compareNode = new Node<T>(root.data);
+        Node<T> newNode = new Node<T>(data);
+
+        nullSpaceFinder(compareNode, newNode);
+
+        //determine which case the tree is on by comparing aunts
+        if(newNode.context[0].)
+
+
+
+    }
+
+    //TODO work on this tmr (trying to implement recursion method) **may not work using recursion**
+    /**
+     * helper method for insert for finding a place (null) for new node in the tree
+     * 
+     * @param compareNode is should be set to root node when implemented in insert method
+     * @param newNode is the new node that insert method is inserting
+     */
+    private void nullSpaceFinder(Node<T> compareNode, Node<T> newNode){
+
+        if(compareNode.data.compareTo(newNode.data) > 0){
+            if(compareNode.context[1] != null){
+                compareNode = compareNode.context[1];
+                nullSpaceFinder(compareNode, newNode);
+            }
+            else{
+                compareNode.context[1] = newNode;
+            }
+
+        }
+        //right child contestant
+        else if(compareNode.data.compareTo(newNode.data) < 0){
+            if(compareNode.context[2] != null){
+                compareNode = compareNode.context[2];
+                nullSpaceFinder(compareNode, newNode);
+            }
+            else{
+                compareNode.context[2] = newNode;
+            }
+            
+        }
+
     }
 
     /**
