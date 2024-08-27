@@ -92,12 +92,7 @@ public class RedBlackTree<T extends Comparable<T>> {
             else if(newNode.context[0].context[0].data.compareTo(data) > 0){
                 
             }
-
-
         }
-
-
-
     }
 
     //TODO work on this tmr (trying to implement recursion method) ##may not work using recursion## also, how can I check node colors?

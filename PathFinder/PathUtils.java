@@ -67,8 +67,6 @@ public class PathUtils {
         }
         //two ways to go from A to X
         if(start.getX() < end.getX() && start.getY() < end.getY()){
-            ArrayList<Path>
-            return
            ArrayList<Path> ultiArr = new ArrayList<>();
            ultiArr.addAll(findAllPaths(start.goNorth(), end));
            ultiArr.addAll(findAllPaths(start.goEast(), end));

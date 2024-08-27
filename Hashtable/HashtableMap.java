@@ -98,6 +98,7 @@ public class HashtableMap<keyType, valueType>{
         int hashIndex = Math.abs(key.hashCode()) % capacity;
         //adding pair
         if(array[hashIndex] == null){
+            
             array[hashIndex] = hp;
         }
         //collision
@@ -117,9 +118,10 @@ public class HashtableMap<keyType, valueType>{
             //double size and rehash using helper methods
             rehash();
         }
-
     }
 
+
+    
     /*
      * rehasing involves doubling the array size 
      * and assigning existing HashPair objects a new index in the doubled array
@@ -134,13 +136,13 @@ public class HashtableMap<keyType, valueType>{
                 while(newArray[hashIndex] != null){
                     hashIndex++;
                     if(hashIndex == capacity){
-                        hashIndex=0;
+                        hashIndex = 0;
                     }
                 }
                 newArray[hashIndex] = hp; 
             }
         }
-        array = newArray;
+        array = newArray;  
     }
 
 
