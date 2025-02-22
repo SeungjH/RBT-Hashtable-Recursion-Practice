@@ -1,3 +1,2 @@
-# githubTestRepo
-githubTestRepo
+README
 Home for files worked in 2sinsokdaeungsadan
